@@ -16,6 +16,10 @@ namespace AoC
             var d2 = new Day2();
             d2.Part1();
             d2.Part2();
+
+            var d3 = new Day3();
+            d3.Part1();
+            d3.Part2();
         }
     }
 }
