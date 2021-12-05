@@ -43,34 +43,7 @@ namespace AoC
 
         }
 
-        public void Part1()
-        {
-            var grid = new int[1000, 1000];
-
-            foreach(var line in LineSegments)
-            {
-                if(line.Start.X == line.End.X || line.Start.Y == line.End.Y)
-                {
-                    var xDiff = line.Start.X - line.End.X;
-                    var yDiff = line.Start.Y - line.End.Y;
-
-                    for(int i = 0; i < Math.Abs(xDiff) + 1; i++)
-                        for(int j = 0; j < Math.Abs(yDiff) + 1; j++)
-                        {
-                            var x = line.Start.X + (xDiff < 0 ? i : i * -1);
-                            var y = line.Start.Y + (yDiff < 0 ? j : j * -1);
-
-                            grid[x, y]++;
-                        }
-                }
-            }
-
-            var tot = grid.Cast<int>().Where(x => x > 1).Count();
-
-            Console.WriteLine($"D5.P1 Total: {tot}");
-        }
-
-        public void Part2()
+        public int Solve(bool useDiagonal)
         {
             var grid = new int[1000, 1000];
 
@@ -90,12 +63,12 @@ namespace AoC
                             grid[x, y]++;
                         }
                 }
-                else
+                else if(useDiagonal)
                 {
                     var xDiff = line.Start.X - line.End.X;
                     var yDiff = line.Start.Y - line.End.Y;
 
-                    for(int i = 0; i < Math.Abs(xDiff) + 1; i++)
+                    for (int i = 0; i < Math.Abs(xDiff) + 1; i++)
                     {
                         var xCoord = line.Start.X + ((xDiff < 0) ? i : i * -1);
                         var yCoord = line.Start.Y + ((yDiff < 0) ? i : i * -1);
@@ -106,6 +79,18 @@ namespace AoC
 
             var tot = grid.Cast<int>().Where(x => x > 1).Count();
 
+            return tot;
+        }
+
+        public void Part1()
+        {
+            var tot = Solve(false);
+            Console.WriteLine($"D5.P1 Total: {tot}");
+        }
+
+        public void Part2()
+        {
+            var tot = Solve(true);
             Console.WriteLine($"D5.P2 Total: {tot}");
         }
     }
