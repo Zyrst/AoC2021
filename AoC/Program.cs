@@ -33,9 +33,12 @@ namespace AoC
             //d6.Part1();
             //d6.Part2();
 
-            var d7 = new Day7();
-            d7.Part1();
-            d7.Part2();
+            //var d7 = new Day7();
+            //d7.Part1();
+            //d7.Part2();
+
+            var d8 = new Day8();
+            d8.Part1();
         }
     }
 }
