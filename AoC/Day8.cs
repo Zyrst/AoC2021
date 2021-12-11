@@ -16,16 +16,12 @@ namespace AoC
 
         public void Part1()
         {
-            // Noooope
             var sum = 0;
             foreach (var input in Data)
             {
                 var values = input[1].Split(" ").Where(y => y != string.Empty).ToArray();
-                var allCodes = input[0].Split(" ").Where(y => y != string.Empty);
-
-                allCodes = allCodes.Concat(values);
                 
-                foreach(var code in allCodes)
+                foreach(var code in values)
                 {
                     switch (code.Length)
                     {
